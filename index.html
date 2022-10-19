@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <style>
+        #person {
+            position: relative;
+            width: 96px;
+            height: 96px;
+            animation: move 3s linear alternate infinite;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <div id="person"><img src="https://null-code.ru/uploads/posts/2017-11/1510228742_2d-game-character-sprites-9164_imgs_9164_1.png"></div>
+    <script>
+        let person = document.getElementById('person');
+        let coordinates = [0, 0];
+
+        document.addEventListener('keydown', (e) => {
+
+            switch (e.keyCode) {
+                case 68:
+                    easlMove(0, 68);
+                break;
+                case 65:
+                    easlMove(0, 65);
+                break;
+                case 83:
+                    easlMove(0, 83);
+                break;
+                case 87:
+                    easlMove(0, 87);
+                break;
+                default:
+
+                break;
+            }
+
+            console.log(e.keyCode);
+        });
+
+        function easlMove(counter, keycode) {
+            if (counter === 10) return;
+
+            switch (keycode) {
+                case 68:
+                    coordinates[1] += 9.6;
+                    person.style.left = coordinates[1] + 'px';
+                break;
+                case 65:
+                    coordinates[1] -= 9.6;
+                    person.style.left = coordinates[1] + 'px';
+                break;
+                case 83:
+                    coordinates[0] += 9.6;
+                    person.style.top = coordinates[0] + 'px';
+                break;
+                case 87:
+                    coordinates[0] -= 9.6;
+                    person.style.top = coordinates[0] + 'px';
+                break;
+                default:
+
+                break;
+            }
+
+            function newMove() {
+                easlMove(++counter, keycode);
+                console.log('1')
+            }
+
+            setTimeout(newMove, 100);
+        }
+    </script>
+</body>
+</html> 
